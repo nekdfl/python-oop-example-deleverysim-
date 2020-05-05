@@ -71,12 +71,17 @@ class DeleverySim:
         self.__bike_count = input("Числов велокурьеров: ")
         self.__kamaz_count = input("Число грузовых: ")
 
+    def __print_bills(self, bills):
+
+        for bill in bills:
+            bill.print_bill(bill)
+            print("=" * 40)
+
     def do_djob(self):
         pass
         time.sleep(0.1)
         bill_list = self.__billmaker.gen_bill_list()
-        for bill in bill_list:
-            print(f"Новый заказ: из {bill.get_src_address} в {bill.get_dest_address}, позвонить {bill.get_contact}")
+        self.__print_bills(bill_list)
 
         # self.__contactmaker.make_contact()
 
