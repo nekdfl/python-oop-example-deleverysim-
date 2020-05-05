@@ -30,6 +30,22 @@ class Contact:
     def get_phone_num(self):
         return self.__phone_num
 
+    @property
+    def get_initials(self):
+        initials = f"{self.__first_name} " \
+                      f"{self.__second_name.upper():.1}." \
+                      f"{self.__third_name.upper():.1}. "
+        return initials
+
+    @property
+    def full_contact(self):
+        full_contact = f"{self.__firstname} " \
+                      f"{self.__secondname.upper():.1}." \
+                      f"{self.__thirdname.upper():.1}. " \
+                      f"т. {self.__phone_num},\n"
+        return full_contact
+
+
 
 def main():
     pass

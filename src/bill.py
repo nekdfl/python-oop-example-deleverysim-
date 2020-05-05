@@ -51,7 +51,7 @@ class Bill:
                        f"{mybill.get_from_contact.get_thirdname.upper()[:1]}. "
 
         short_from_a = f"из г. {mybill.get_src_address.get_city} " \
-                       f"ул. {mybill.get_src_address.get_street} ," \
+                       f"ул. {mybill.get_src_address.get_street}, " \
                        f"Дом {mybill.get_src_address.get_build_num} "
 
         short_to_c = f"{mybill.get_to_contact.get_firstname} " \
@@ -59,10 +59,10 @@ class Bill:
                      f"{mybill.get_to_contact.get_thirdname.upper():.1}. "
 
         short_to_a = f"из г. {mybill.get_dest_address.get_city} " \
-                     f"ул. {mybill.get_dest_address.get_street} ," \
+                     f"ул. {mybill.get_dest_address.get_street}, " \
                      f"Дом {mybill.get_dest_address.get_build_num} "
 
-        print(f"Заказ на посылку № {mybill.get_serialnum}\n"
+        print(f"Заказ на посылку № {mybill.get_serialnum:0>14}\n"
               f"От {short_from_c}"
               f"{short_from_a}"
               f"т. {mybill.get_from_contact.get_phone_num},\n"

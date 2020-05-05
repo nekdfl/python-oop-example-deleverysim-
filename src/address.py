@@ -12,6 +12,13 @@ class Address:
         self.__buildnum = buildnum
 
     @property
+    def get_full_address(self):
+        full_addr = f"из г. {self.__city} " \
+                     f"ул. {self.__street}, " \
+                     f"Дом {self.__buildnum} "
+        return full_addr
+
+    @property
     def get_city(self):
         return self.__city
 
