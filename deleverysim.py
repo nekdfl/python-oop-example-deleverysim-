@@ -16,18 +16,15 @@ class DeleverySim:
 
     def __init_contact_maker_data(self):
         self.__contactmakerdata_firstname = ["Смирнов", "Иванов", "Кузнецов", "Попов", "Лебедев", "Козлов", "Новиков",
-                                             "Морозов",
-                                             "Петров", "Волков", "Соловьёв", "Васильев", "Зайцев", "Павлов", "Семёнов",
-                                             "Голубев", "Виноградов", "Богданов",
+                                             "Морозов", "Петров", "Волков", "Соловьёв", "Васильев", "Зайцев", "Павлов",
+                                             "Семёнов", "Голубев", "Виноградов", "Богданов",
                                              "Воробьёв", "Фёдоров", "Михайлов", "Беляев"]
 
         self.__contactmakerdata_secondname = ["Бажен", "Бенедикт", "Богдан", "Боеслав", "Болеслав", "Боримир", "Борис",
-                                              "Борислав",
-                                              "Боян", "Бронислав", "Будимир", "Булат"]
+                                              "Борислав", "Боян", "Бронислав", "Будимир", "Булат"]
 
         self.__contactmakerdata_thirdname = ["Александрович", "Алексеевич", "Анатольевич", "Андреевич", "Антонович",
-                                             "Аркадьевич",
-                                             "Арсеньевич", "Артемович", "Афанасьевич"]
+                                             "Аркадьевич", "Арсеньевич", "Артемович", "Афанасьевич"]
 
         self.__phone_length = 6
 
@@ -56,7 +53,9 @@ class DeleverySim:
                                            self.__address_maker_data_street,
                                            self.__address_maker_data_buildnumlen)
 
-        self.__billmaker = BillMaker(self.__max_bill_count, self.__max_bill_count, self.__contactmaker,
+        self.__billmaker = BillMaker(self.__min_bill_count,
+                                     self.__max_bill_count,
+                                     self.__contactmaker,
                                      self.__addressmaker)
 
     def __init__(self):
@@ -72,7 +71,25 @@ class DeleverySim:
         self.__bike_count = input("Числов велокурьеров: ")
         self.__kamaz_count = input("Число грузовых: ")
 
+    def __print_bills(self, bills):
+
+        for bill in bills:
+            bill.print_bill(bill)
+            print("=" * 40)
+
     def do_djob(self):
         pass
         time.sleep(0.1)
+        bill_list = self.__billmaker.gen_bill_list()
+        self.__print_bills(bill_list)
+
         # self.__contactmaker.make_contact()
+
+
+def main():
+    dsim = DeleverySim()
+    dsim.do_djob()
+
+
+if __name__ == "__main__":
+    main()
