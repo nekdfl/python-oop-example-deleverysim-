@@ -3,10 +3,11 @@
 
 class Bill:
 
-    def __init__(self, src_addr, dst_addr, contact, is_fragile, weight, size):
+    def __init__(self, src_addr, dst_addr, from_contact, to_contact, is_fragile, weight, size):
         self.__src_addr = src_addr
         self.__dst_addr = dst_addr
-        self.__contact = contact
+        self.__from_contact = from_contact
+        self.__to_contact = to_contact
         self.__is_fragile = is_fragile
         self.__weight = weight
         self.__size = size
@@ -20,8 +21,12 @@ class Bill:
         return self.__dst_addr
 
     @property
-    def get_contact(self):
-        return self.__contact
+    def get_from_contact(self):
+        return self.__from_contact
+
+    @property
+    def get_to_contact(self):
+        return self.__to_contact
 
     @property
     def is_fragile(self):
@@ -38,9 +43,41 @@ class Bill:
 
 def main():
     pass
-    mybill = Bill("src", "dst", "cont", True, 10, 0.22)
-    print(f"from: {mybill.get_src_address}; to: {mybill.get_dest_address}, call {mybill.get_contact},"
-          f" care it {mybill.is_fragile}, weight kg: {mybill.get_weight}, size {mybill.get_size} m^3")
+    from addressmaker import AddressMaker
+    from contactmaker import ContactMaker
+    amker = AddressMaker(["Москва", "Ростов"], ["Ленина", "Мира"], 99)
+    src_addr = amker.make_address()
+    dst_addr = amker.make_address()
+    cmker = ContactMaker(["Иванов", "Сидоров"], ["Иван", "Петр"], ["Семенович", "Витальевич"])
+    from_cont = cmker.make_contact()
+    to_cont = cmker.make_contact()
+
+    mybill = Bill(src_addr, dst_addr, from_cont, to_cont, True, 0.02, 0.22)
+
+    short_from_c = f"{mybill.get_from_contact.get_firstname}" \
+                   f" {mybill.get_from_contact.get_secondname.upper()[:1]}." \
+                   f"{mybill.get_from_contact.get_thirdname.upper()[:1]}. "
+
+    short_from_a = f"из г. {mybill.get_src_address.get_city} " \
+                   f"ул. {mybill.get_src_address.get_street} " \
+                   f"Дом {mybill.get_src_address.get_build_num} "
+
+    short_to_c = f"{mybill.get_to_contact.get_firstname} " \
+                 f"{mybill.get_to_contact.get_secondname.upper():.1}." \
+                 f"{mybill.get_to_contact.get_thirdname.upper():.1}. "
+
+    short_to_a = f"из г. {mybill.get_dest_address.get_city} " \
+                 f"ул. {mybill.get_dest_address.get_street} " \
+                 f"Дом {mybill.get_dest_address.get_build_num} "
+
+    print(f"Заказ на посылку \n"
+          f"От {short_from_c}"
+          f"{short_from_a}"
+          f"т. {mybill.get_from_contact.get_phone_num},\n"
+          f"Кому {short_to_c}"
+          f"{short_to_a}"
+          f"т. {mybill.get_to_contact.get_phone_num},\n"
+          f"Хрупкое {mybill.is_fragile}, Масса кг: {mybill.get_weight}, size {mybill.get_size} m^3")
 
 
 if __name__ == "__main__":
