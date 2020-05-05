@@ -2,9 +2,9 @@
 # The above encoding declaration is required and the file must be saved as UTF-8
 
 import random
-from bill import Bill
-from addressmaker import AddressMaker
-from contactmaker import ContactMaker
+from src.bill import Bill
+from src.addressmaker import AddressMaker
+from src.contactmaker import ContactMaker
 
 
 class BillMaker:

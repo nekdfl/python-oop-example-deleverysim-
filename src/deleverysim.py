@@ -1,8 +1,8 @@
 import time
 
-from billmaker import BillMaker
-from contactmaker import ContactMaker
-from addressmaker import AddressMaker
+from src.billmaker import BillMaker
+from src.contactmaker import ContactMaker
+from src.addressmaker import AddressMaker
 
 
 class DeleverySim:
@@ -77,7 +77,7 @@ class DeleverySim:
             bill.print_bill(bill)
             print("=" * 40)
 
-    def do_djob(self):
+    def do_simulate_cycle(self):
         pass
         time.sleep(0.1)
         bill_list = self.__billmaker.gen_bill_list()
@@ -88,7 +88,7 @@ class DeleverySim:
 
 def main():
     dsim = DeleverySim()
-    dsim.do_djob()
+    dsim.do_simulate_cycle()
 
 
 if __name__ == "__main__":
