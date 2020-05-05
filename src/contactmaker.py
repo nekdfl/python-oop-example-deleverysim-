@@ -2,7 +2,7 @@
 # пример паттерна фабрика не путать с абстрактной файбрикой
 
 import random
-from contact import Contact
+from src.contact import Contact
 
 
 class ContactMaker:

@@ -2,7 +2,7 @@
 # пример паттерна фабрика не путать с абстрактной файбрикой
 
 import random
-from address import Address
+from src.address import Address
 
 
 class AddressMaker:

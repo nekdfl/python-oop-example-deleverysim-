@@ -3,11 +3,8 @@
 # links:
 #   python singleton
 
-import time
-import os
 import signal
-from builtins import RuntimeError
-from deleverysim import DeleverySim
+from src.deleverysim import DeleverySim
 
 
 # MainApp = singleton с отложенным созданием экземпляра
@@ -31,7 +28,7 @@ class MainApp:
         while True:
             # Do nothing and hog CPU forever until SIGINT received.
             pass
-            self.__dsym.do_djob()
+            self.__dsym.do_simulate_cycle()
 
 
 def handler(signal_received, frame):

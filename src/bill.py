@@ -74,8 +74,8 @@ class Bill:
 
 def main():
     pass
-    from addressmaker import AddressMaker
-    from contactmaker import ContactMaker
+    from src.addressmaker import AddressMaker
+    from src.contactmaker import ContactMaker
     amker = AddressMaker(["Москва", "Ростов"], ["Ленина", "Мира"], 99)
     src_addr = amker.make_address()
     dst_addr = amker.make_address()
