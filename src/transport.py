@@ -21,6 +21,7 @@ class Transport:
 
     def __gen_unique_name(self):
         pass
+        return "Иницилизруй функцию в наследнике!"
 
     def __goto_src(self):
         pass
@@ -35,7 +36,10 @@ class Transport:
         pass
 
     def do_trasport(self):
-        pass
+        self.__goto_src()
+        self.__drink_coffe()
+        self.__get_brake()
+        self.__goto_dest()
 
 
 class Taxi(Transport):
